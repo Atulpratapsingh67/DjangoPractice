@@ -190,3 +190,5 @@ STATICFILES_DIRS = [
 #     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
 #     'USE_JWT' : True
 # }
+
+AUTH_USER_MODEL = "users.User"

@@ -22,7 +22,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('api/v1/', include('authentication.urls')),
-    path('accounts/', include('allauth.urls')),
+    # path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('testing/', include("testing.urls")),
     path('home/', TemplateView.as_view(template_name='dashboard/home.html'), name='home'),

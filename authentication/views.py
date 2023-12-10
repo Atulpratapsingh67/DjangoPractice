@@ -5,6 +5,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth import get_user_model
 from testing.serializer import UserSerializer
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from dj_rest_auth.registration.views import SocialLoginView
 
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -24,3 +27,9 @@ class TokenLogin(ModelViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user = UserSerializer(user)
         return Response({"token": token.key,"user":user.data})
+    
+
+
+class GoogleLogin(SocialLoginView): # if you want to use Authorization Code Grant, use this
+    adapter_class = GoogleOAuth2Adapter
+    client_class = OAuth2Client
