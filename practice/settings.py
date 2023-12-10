@@ -40,12 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'users',
     'testing',
+    "authentication",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth'
 ]
 
 MIDDLEWARE = [
@@ -137,6 +142,13 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication'
+    ],
+}
 
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
@@ -169,3 +181,12 @@ STATICFILES_DIRS = [
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # ACCOUNT_EMAIL_VERIFICATION = 'optional'
 # LOGIN_REDIRECT_URL = '/'
+
+
+
+
+# REST_AUTH = {
+#     'JWT_AUTH_COOKIE': 'my-app-auth',
+#     'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
+#     'USE_JWT' : True
+# }
